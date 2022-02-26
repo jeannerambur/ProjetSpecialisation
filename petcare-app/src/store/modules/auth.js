@@ -2,7 +2,7 @@ import axios from "axios";
 
 const state = {
     user: null,
-    posts: null,
+    pets: null,
 };
 
 const getters = {
@@ -24,19 +24,21 @@ const actions = {
         await axios.post("login", user);
         await commit("setUser", user.get("username"));
     },
-    async LogOut({ commit }) {
-        let user = null;
-        commit("logout", user);
-    },
-    async CreatePet({ dispatch }, post) {
-        await axios.post("pet", post);
+
+    async CreatePet({ dispatch }, pet) {
+        await axios.post("pet", pet);
         return await dispatch("GetPets");
     },
 
     async GetPets({ commit }) {
         let response = await axios.get("pets");
         commit("setPets", response.data);
-    }
+    },
+
+    async LogOut({ commit }) {
+        let user = null;
+        commit("logout", user);
+    },
 };
 
 const mutations = {
@@ -44,7 +46,7 @@ const mutations = {
         state.user = username;
     },
 
-    setPosts(state, posts) {
+    setPets(state, posts) {
         state.posts = posts;
     },
     logout(state, user) {

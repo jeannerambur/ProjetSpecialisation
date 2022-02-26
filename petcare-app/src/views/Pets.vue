@@ -16,20 +16,19 @@
       <ul>
         <li v-for="pet in Pets" :key="pet.id">
           <div id="pet-div">
-            <p>{{ pet.petName }}</p>
-            <p>Written By: {{ pet.author.username }}</p>
+            <p>{{ post.petName }}</p>
           </div>
         </li>
       </ul>
     </div>
-    <div v-else>Oh no!!! We have no pet</div>
+    <div v-else>Oh no!!! We have no posts</div>
   </div>
 </template>
 
 <script>
 import { mapGetters, mapActions } from "vuex";
 export default {
-  name: "Pet",
+  name: "Pets",
   components: {},
   data() {
     return {
@@ -44,7 +43,7 @@ export default {
     this.GetPets()
   },
   computed: {
-    ...mapGetters({ Pets: "StatePets", User: "StateUser" }),
+    ...mapGetters({ Posts: "StatePets", User: "StateUser" }),
   },
   methods: {
     ...mapActions(["CreatePet", "GetPets"]),
@@ -98,7 +97,7 @@ textarea {
 ul {
   list-style: none;
 }
-#post-div {
+#pet-div {
   border: 3px solid #000;
   width: 500px;
   margin: auto;
