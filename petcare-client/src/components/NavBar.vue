@@ -23,6 +23,9 @@
           <router-link to="/profile" class="nav-link">Profile</router-link>
         </li>
         <li class="nav-item" v-if='isLoggedIn'>
+          <router-link to="/pet" class="nav-link">Pet</router-link>
+        </li>
+        <li class="nav-item" v-if='isLoggedIn'>
           <a to="/logout" class="nav-link" @click.prevent="logoutUser">Logout</a>
         </li>
 
